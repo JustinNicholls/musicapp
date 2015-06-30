@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <div class="media">
+	  <div class="pull-left">
+          <img ng-src="{{band.image}}" width="300" height="300"/>
+          <div class="text-center" ng-if="currentUser">
+            <div ng-show="!isfan()">
+              <button ng-click="addtolist()" class="btn btn-block btn-success">
+                <span class="glyphicon glyphicon-plus"></span> Add From List
+              </button>
+            </div>
+            <div ng-show="isfan()">
+              <button ng-click="removefromlist()" class="btn btn-block btn-danger">
+                <span class="glyphicon glyphicon-minus"></span> Remove From List
+              </button>
+            </div>
+          </div>
+          <div class="text-center" ng-show="!currentUser">
+            <a class="btn btn-block btn-primary" href="#/login">Login to Add to List</a>
+          </div>
+		  <h3>Members</h3>
+       
+     <div  ng-repeat="member in band.members">
+     <p>{{member.name}} {{member.role}} </p>
+		</div>
+          <h3>Events Interested in going to</h3>  
+		<div  ng-repeat="event in events">
+		<p>{{event.date}} {{event.location}} {{event.Stadium}} </p>
+		</div>		  
+        </div>
+        <div class="media-body">
+          <h2 class="media-heading">
+            {{band.name}}
+            <span class="pull-right text-danger">{{band.yearstarted}}</span>
+          </h2>
+		  <h3>Description</h3>
+          <p>{{band.description}}</p>
+		  <br>
+		  <h3>Additional Information</h3>
+		  <h4> <b>Origin:{{band.origin}} </b></h4>
+		  <h4> <b> Genre:{{band.genre}}</b></h4>
+		  <h4> <b> Record Label:{{band.recordlabel}} </b></h4>
+		  <br>
+		  <h3>Public Comments</h3>
+		  <div  ng-repeat="publiccomment in publiccomments">
+     <p><b>{{publiccomment.user_first}}</b>:&nbsp;{{publiccomment.comment}} </p>
+	 <p>{{hello}}</p>
+		</div>
+		  <h3>Private Comments</h3>
+		   <div  ng-repeat="privatecomment in privatecomments">
+     <p><b>{{privatecomment.user_first}}</b>:&nbsp;{{privatecomment.comment}} </p>
+	 <p>{{hello}}</p>
+		</div>
+		<div class="pull-right">
+		<h3> {{band.list.length}} other people like this band </h3>
+		</div>
+		</div>
+      </div>
+    </div>
+  </div>
+</div>

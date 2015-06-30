@@ -1,0 +1,64 @@
+<div class="jumbotron">
+    <div class="container">
+    </div>
+</div>
+
+<div class="container">
+    <div class="panel panel-default" ng-if="currentUser">
+        <div class="panel-heading">
+            {{Title}}
+            <div class="pull-right">
+                <input class="search" type="text" ng-model="userlist" placeholder="Search">
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="row artist-list">
+                <div class="col-xs-4 col-md-3" ng-repeat="artist in artists | filter:userlist">
+                    <a href="/artists/{{artist._id}}">
+                        <img class="img-rounded" ng-src="{{artist.image}}" width="100%"/>
+                    </a>
+                    <div class="text-center">
+                        <a href="/artists/{{artist._id}}">{{artist.name}}</a>
+                        <p class="text-muted">Year Started: {{artist.yearstarted}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+		<div class="panel-heading">
+            {{List}}
+            <div class="pull-right">
+                <input class="search" type="text" ng-model="eventlist" placeholder="Search">
+            </div>
+        </div>
+		<div class="panel-body">
+            <div class="row artist-list">
+                <div class="col-xs-4 col-md-3" ng-repeat="event in events | filter:eventlist">
+                   <p>{{event.artist}}</p>
+				   <p>{{event.date}}</p>
+				   <p>{{event.location}}</p>
+				   <p>{{event.Stadium}}</p>
+                </div>
+            </div>
+        </div>
+		<div class="panel-heading">
+            {{Added}}
+            <div class="pull-right">
+                <input class="search" type="text" ng-model="alllist" placeholder="Search">
+            </div>
+        </div>
+		<div class="panel-body">
+            <div class="row artist-list">
+                <div class="col-xs-4 col-md-3" ng-repeat="list in lists | filter:alllist">
+                    <a href="/artists/{{list._id}}">
+                        <img class="img-rounded" ng-src="{{list.image}}" width="100%"/>
+                    </a>
+                    <div class="text-center">
+                        <a href="/artists/{{list._id}}">{{list.name}}</a>
+                        <p class="text-muted">Year Started: {{list.yearstarted}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

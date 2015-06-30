@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading">Add Public/Private Comment</div>
+    <div class="panel-body">
+	<select ng-model="one" ng-options="artist.name for artist in artists">
+      <option value="">--choose an artist---</option>
+    </select>
+	<select ng-model="two" ng-options="comment.name for comment in comments">
+	<option value="">--choose a type---</option>
+	</select>
+	</div>
+	<div class="panel-body">
+      <form class="form" method="post" ng-submit="addcomment()" name="commentform">
+	  
+        <div class="form-group" ng-class="{ 'has-success' : commentform.comment.$valid && commentform.comment.$dirty, 'has-error' : commentform.comment.$invalid && commentform.comment.$dirty }">
+          <input class="form-control" type="text" name="comment" ng-model="comment" placeholder="Enter Comment" required autofocus>
+          <div class="help-block text-danger" ng-if="commentform.comment.$dirty" ng-messages="commentform.comment.$error">
+            <div ng-message="required">Comment is needed</div>
+          </div>
+        </div>
+        <button class="btn btn-primary" type="submit" ng-disabled="commentform.$invalid">Add</button>
+      </form>
+    </div>
+  </div>
+</div>

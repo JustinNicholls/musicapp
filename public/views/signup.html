@@ -1,0 +1,49 @@
+<div class="container">
+  <br/>
+
+  <div class="row">
+    <div class="center-form panel">
+      <form method="post" ng-submit="signup()" name="signupform">
+        <div class="panel-body">
+          <h2 class="text-center">Sign up</h2>
+
+		   <div class="form-group" ng-class="{ 'has-success' : signupform.first.$valid && signupform.first.$dirty, 'has-error' : signupform.first.$invalid && signupform.first.$dirty }">
+            <input class="form-control input-lg" type="first" id="first" name="first" ng-model="first" placeholder="First Name" required autofocus>
+
+            <div class="help-block text-danger" ng-if="signupform.first.$dirty" ng-messages="signupform.first.$error">
+              <div ng-message="required">Your first name is required.</div>
+            </div>
+          </div>
+		  
+		   <div class="form-group" ng-class="{ 'has-success' : signupform.last.$valid && signupform.last.$dirty, 'has-error' : signupform.last.$invalid && signupform.last.$dirty }">
+            <input class="form-control input-lg" type="last" id="last" name="last" ng-model="last" placeholder="Last Name" required>
+
+            <div class="help-block text-danger" ng-if="signupform.last.$dirty" ng-messages="signupform.last.$error">
+              <div ng-message="required">Your last name is required.</div>
+            </div>
+          </div>
+		  
+          <div class="form-group" ng-class="{ 'has-success' : signupform.email.$valid && signupform.email.$dirty, 'has-error' : signupform.email.$invalid && signupform.email.$dirty }">
+            <input class="form-control input-lg" type="email" id="email" name="email" ng-model="email" placeholder="Email" required>
+
+            <div class="help-block text-danger" ng-if="signupform.email.$dirty" ng-messages="signupform.email.$error">
+              <div ng-message="required">Your email address is required.</div>
+              <div ng-message="email">Your email address is invalid.</div>
+            </div>
+          </div>
+
+          <div class="form-group" ng-class="{ 'has-success' : signupform.password.$valid && signupform.password.$dirty, 'has-error' : signupform.password.$invalid && signupform.password.$dirty }">
+            <input class="form-control input-lg" type="password" name="password" ng-model="password" placeholder="Password" required>
+
+            <div class="help-block text-danger" ng-if="signupform.password.$dirty" ng-messages="signupform.password.$error">
+              <div ng-message="required">Password is required.</div>
+            </div>
+          </div>
+
+
+          <button type="submit" ng-disabled="signupform.$invalid"class="btn btn-lg btn-block btn-primary">Create Account </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

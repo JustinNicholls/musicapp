@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Add Event</div>
+		<div class="panel-body">
+	<select ng-model="selectedsource" ng-options="artist.name for artist in artists">
+      <option value="">--choose an artist---</option>
+    </select>
+	<select ng-model="selectedItem" ng-options="event.date for event in selectedsource.events">
+		<option value="">-- choose a date --</option>
+	</select>
+	<select ng-model="secondselect" ng-options="event.location for event in selectedsource.events">
+		<option value="">-- choose location --</option>
+	</select>
+	</div>
+	
+        <div class="panel-body">
+            <form class="form" method="post" ng-submit="addevent()" name="addform">
+                <div class="form-group" ng-class="{ 'has-success' : addform.eventname.$valid && addform.eventname.$dirty, 'has-error' : addform.eventname.$invalid && addform.eventname.$dirty }">
+                    <input class="form-control" type="text" name="eventname" ng-model="eventname" placeholder="Event Name" required autofocus>
+                    <div class="help-block text-danger" ng-if="addform.eventname.$dirty" ng-messages="addform.eventname.$error">
+                        <div ng-message="required">Event Name Required</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" ng-disabled="addform.$invalid">Add</button>
+            </form>
+			<h3> Events to choose from </h3>
+			Search: <input ng-model="searchText">
+    <table ng-table="tableParams" class="table" ng-repeat="artist in artists"> 
+            <tr ng-repeat="img1 in artist.events | filter:searchText">
+			<td>{{img1.artist}}</td>
+			<td>{{img1.date}}</td>
+			<td>{{img1.location}}</td>
+			<td>{{img1.Stadium}}</td>
+			</tr>
+</table>
+        </div>
+    </div>
+</div>

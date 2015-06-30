@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="panel panel-default">
+        <div class="panel-heading">Add Artist</div>
+        <div class="panel-body">
+            <form class="form" method="post" ng-submit="addartist()" name="addform">
+                <div class="form-group" ng-class="{ 'has-success' : addform.artistname.$valid && addform.artistname.$dirty, 'has-error' : addform.artistname.$invalid && addform.artistname.$dirty }">
+                    <input class="form-control" type="text" name="artistname" ng-model="artistname" placeholder="Artist/Band Name" required autofocus>
+                    <div class="help-block text-danger" ng-if="addform.artistname.$dirty" ng-messages="addform.artistname.$error">
+                        <div ng-message="required">Artist/Band Name Required</div>
+                    </div>
+                </div>
+                <button class="btn btn-primary" type="submit" ng-disabled="addform.$invalid">Add</button>
+            </form>
+        </div>
+    </div>
+</div>

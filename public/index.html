@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app='Musicapp'>
+
+<head>
+
+    <base href="/"/>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-COMPATIBLE" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Music Information App</title>
+    <link href="stylesheets/style.css" rel="stylesheet">
+	
+	
+</head>
+
+<body>
+<div ng-controller="NavbarCtrl" class="navbar navbar-default navbar-static-top" role="navigation" bs-navbar>
+
+<div class="navbar navbar-default navbar-static-top"
+     role="navigation" bs-navbar>
+    <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+            <strong>Music App</strong>
+        </a>
+    </div>
+	
+<ul class="nav navbar-nav" ng-if="currentUser">
+    <li data-match-route="/add"><a href="/add">Add</a></li>
+	<li data-match-route="/details"><a href="/comments">comments</a></li>
+	<li data-match-route="/events"><a href="/events">Events</a></li>
+  </ul>
+    <ul class="nav navbar-nav pull-right" ng-if="!currentUser">
+        <li data-match-route="/login"><a href="/login">Login</a></li>
+        <li data-match-route="/signup"><a href="/signup">Sign up</a></li>
+    </ul>
+	 
+    <ul class="nav navbar-nav pull-right" ng-if="currentUser">
+        <li class="navbar-text" ng-bind="currentUser.first"></li>
+        <li><a href="javascript:void(0)" ng-click="logout()">Log out</a> </li>
+    </ul>
+     </div>
+<div ng-view></div>
+
+
+<script src="vendor/angular.js"></script>
+<script src="vendor/angular-animate.js"></script>
+<script src="vendor/angular-strap.min.js"></script>
+<script src="vendor/angular-strap.tpl.min.js"></script>
+<script src="vendor/angular-messages.js"></script>
+<script src="vendor/angular-resource.js"></script>
+<script src="vendor/angular-route.js"></script>
+<script src="vendor/angular-cookies.js"></script>
+<script src="vendor/moment.js"></script>
+
+<script src="app.js"></script>
+<script src="controllers/home.js"></script>
+<script src="controllers/navbar.js"></script>
+<script src="services/auth.js"></script>
+<script src="services/Band.js"></script>
+<script src="controllers/signup.js"></script>
+<script src="controllers/login.js"></script>
+<script src="controllers/add.js"></script>
+<script src="config/cors.js"></script>
+<script src="controllers/detail.js"></script>
+<script src="controllers/Comment.js"></script>
+<script src="controllers/events.js"></script>
+<script src="services/Stuff.js"></script>
+<script src="services/Fans.js"></script>
+<script src="services/Event.js"></script>
+
+
+</body>
+</html>
